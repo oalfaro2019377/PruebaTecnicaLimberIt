@@ -1,0 +1,59 @@
+<body>
+    <h1>Lista de Supervisores</h1>
+    <br>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Agregar Región</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let supervisor of ListarSupervisores">
+                <td>{{supervisor.id}}</td>
+                <td>{{supervisor.nombre}}</td>
+                <td>{{supervisor.apellido}}</td>
+                <td>{{supervisor.regionId}}</td>
+                <button class="btn btn-warning" (click)="updateSupervisor(supervisor.id)">Modificar</button>
+                <button class="btn btn-danger" (click)="deleteSupervisor(supervisor.id)">Eliminar</button>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createModalLabel">Crear Región</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre del Supervisor</label>
+                            <input [(ngModel)]="supervisor.nombre" type="text" class="form-control" name="nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Apellido del Supervisor</label>
+                            <input [(ngModel)]="supervisor.apellido" type="text" class="form-control" name="nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Región del Supervisor</label>
+                            <input [(ngModel)]="supervisor.regionId" type="text" class="form-control" name="nombre">
+                        </div>
+                    </form>
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="setSupervisor()" class="btn btn-primary">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>

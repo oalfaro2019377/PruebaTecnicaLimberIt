@@ -1,0 +1,49 @@
+<body>
+    <h1>Lista de Regiones</h1>
+    <br>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Agregar Región</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let region of ListarRegiones">
+                <td>{{region.id}}</td>
+                <td>{{region.nombre}}</td>
+                <button class="btn btn-warning" (click)="updateRegion(region.id)">Modificar</button>
+                <button class="btn btn-danger" (click)="deleteRegion(region.id)">Eliminar</button>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createModalLabel">Crear Región</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre de la Región</label>
+                            <input [(ngModel)]="region.nombre" type="text" class="form-control" name="nombre">
+                        </div>
+                    </form>
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="setRegion()" class="btn btn-primary">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
